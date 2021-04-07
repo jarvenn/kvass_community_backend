@@ -49,6 +49,14 @@ public class UmsUserController extends BaseController {
         return ApiResult.success(map, "登录成功");
     }
 
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    public ApiResult<UmsUser> getUser(@RequestHeader(value = USER_NAME) String userName) {
+        UmsUser user = iUmsUserService.getUserByUsername(userName);
+        return ApiResult.success(user);
+    }
 
-
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public  ApiResult<Object> logOut(){
+        return ApiResult.success(null,"注销成功");
+    }
 }
